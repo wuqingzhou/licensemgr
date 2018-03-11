@@ -33,7 +33,7 @@
         <javaClientGenerator targetPackage="com.teligen.licensemgr.dao" targetProject="src/test/java" type="XMLMAPPER" />
 
         <!-- tableName="%"的话会对所有表进行操作，tableName="tb_license"的话只会对tb_license表进行操作 -->
-        <table tableName="%" >
+        <table tableName="tb_license" >
             <!-- mysql 配置 -->
             <!-- 如果使用了通用mapper来生成代码，则表中必须要有id这个自增长的int字段，这个配置不能少 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
