@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+body {
+    background-color: #fefefe;
+}
+
+.pageTitle {
+    margin: 20px 0 30px 0;
+    text-align: center;
+}

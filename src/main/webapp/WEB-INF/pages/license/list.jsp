@@ -1,23 +1,60 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/common.jsp" %>
+<title>license管理系统</title>
+<style>
+    .search {
+        border: 1px solid #ddd;
+        padding: 15px 20px;
+    }
+
+    #searchForm > .myFilter {
+        margin-right: 12px;
+    }
+</style>
+</head>
+
 <body>
-<h2 style="margin:80px 0 40px 0; text-align:center;"><b>license列表</b></h2>
+<h2 class="pageTitle"><b>license列表</b></h2>
 <div class="container">
     <div class="search">
         <form class="form-inline" id="searchForm" action="/license/list">
-            <div data-toggle="distpicker">
+            <div class="form-group myFilter">
+                <label>过期状态：</label>
+                <select class="form-control" name="cusStatus">
+                    <option ${tbLicenseVo.cusStatus=='all'?selected:''} value="all">所有</option>
+                    <option ${tbLicenseVo.cusStatus=='all'?willExpire:''} value="willExipre">快过期</option>
+                </select>
+            </div>
+            <div class="form-group myFilter">
+                <label>集群名称：</label>
+                <input type="text" class="form-control" name="clusterName" value="${tbLicenseVo.clusterName}"/>
+            </div>
+            <div data-toggle="distpicker" class="myFilter" style="display:inline-block;">
                 <div class="form-group">
-                    <label for="province">省份：</label>
-                    <select class="form-control" id="province"></select>
+                    <label>省份：</label>
+                    <select class="form-control" name="province"></select>
                 </div>
-                <div class="form-group">
-                    <label for="city">城市：</label>
-                    <select class="form-control" id="city"></select>
+                <div class="form-group" style=" margin-left: 10px;">
+                    <label>城市：</label>
+                    <select class="form-control" name="city"></select>
                 </div>
+            </div>
+            <br/>
+            <div style="margin-bottom: 8px;"></div>
+            <div class="form-group myFilter">
+                <label>license生成时间：</label>
+                <input type="text" class="form-control" id="createTimeStr" name="createTimeStr" style="width:310px;"/>
+            </div>
+            <div class="form-group myFilter">
+                <label>license过期时间：</label>
+                <input type="text" class="form-control" id="expireTimeStr" name="expireTimeStr" style="width:310px;"/>
+            </div>
+            <div class="form-group myFilter">
+                <button type="submit" class="btn btn-primary">查询</button>
             </div>
         </form>
     </div>
-    <a class="btn btn-primary" href="/license/gotoAdd">新增</a>
+    <a class="btn btn-primary" href="/license/gotoAdd" style="margin-top:10px;">新增</a>
     <table class="table table-bordered" style="margin-top:20px;">
         <thead>
         <th>序号</th>
@@ -39,7 +76,7 @@
                 <td>${item.clusterName}</td>
                 <td>${item.clusterNum}</td>
                 <td>${item.createTime}</td>
-                <td>${item.activeDay}</td>
+                <td>${item.indate}</td>
                 <td>${item.expireTime}</td>
                 <td>
                     <a class="" href="${ctx}/license/gotoUpdate?id=${item.id}">编辑</a>
@@ -49,9 +86,29 @@
         </c:forEach>
         </tbody>
     </table>
+    <div id="myPagination"></div>
 </div>
 <%@include file="/WEB-INF/pages/common/commonJS.jsp" %>
 <script>
+    layui.use('laypage', function () {
+        var laypage = layui.laypage;
+        laypage.render({
+            elem: 'myPagination',
+            count: 50
+        });
+    });
+
+    laydate.render({
+        elem: '#createTimeStr',
+        type: 'datetime',
+        range: true
+    });
+    laydate.render({
+        elem: '#expireTimeStr',
+        type: 'datetime',
+        range: true
+    });
+
     $(function () {
 
     })

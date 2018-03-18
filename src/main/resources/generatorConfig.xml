@@ -5,12 +5,15 @@
 
 <generatorConfiguration>
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <!-- 指定自定义的通用mapper -->
            <property name="mappers" value="com.teligen.licensemgr.base.dao.MyMapper"/>
             <property name="caseSensitive" value="true"/>
         </plugin>
+
+        <commentGenerator >
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
 
         <!-- 数据库连接配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -33,7 +36,7 @@
         <javaClientGenerator targetPackage="com.teligen.licensemgr.dao" targetProject="src/test/java" type="XMLMAPPER" />
 
         <!-- tableName="%"的话会对所有表进行操作，tableName="tb_license"的话只会对tb_license表进行操作 -->
-        <table tableName="tb_license" >
+        <table tableName="%" >
             <!-- mysql 配置 -->
             <!-- 如果使用了通用mapper来生成代码，则表中必须要有id这个自增长的int字段，这个配置不能少 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>

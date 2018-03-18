@@ -25,8 +25,7 @@ public class TbLicense {
     @Column(name = "create_time")
     private Date createTime;
 
-    @Column(name = "active_day")
-    private Integer activeDay;
+    private Integer indate;
 
     @Column(name = "expire_time")
     private Date expireTime;
@@ -130,17 +129,17 @@ public class TbLicense {
     }
 
     /**
-     * @return active_day
+     * @return indate
      */
-    public Integer getActiveDay() {
-        return activeDay;
+    public Integer getIndate() {
+        return indate;
     }
 
     /**
-     * @param activeDay
+     * @param indate
      */
-    public void setActiveDay(Integer activeDay) {
-        this.activeDay = activeDay;
+    public void setIndate(Integer indate) {
+        this.indate = indate;
     }
 
     /**

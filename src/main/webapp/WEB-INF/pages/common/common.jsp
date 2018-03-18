@@ -6,6 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/resources/js/common/plugin/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/resources/js/common/plugin/toastr/toastr.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/js/common/plugin/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="/resources/css/common/common.css"/>
-    <title>license管理系统</title>
-</head>
+    <link rel="stylesheet" type="text/css" href="/resources/css/app.css"/>

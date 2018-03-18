@@ -1,10 +1,12 @@
 package com.teligen.licensemgr.entity;
 
+import com.teligen.licensemgr.base.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "tb_license")
-public class TbLicense {
+public class TbLicense extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,11 +27,20 @@ public class TbLicense {
     @Column(name = "create_time")
     private Date createTime;
 
-    @Column(name = "active_day")
-    private Integer activeDay;
+    private Integer indate;
 
     @Column(name = "expire_time")
     private Date expireTime;
+
+    /************* 自定义属性 *******************/
+    @Transient
+    private String cusStatus;
+
+    @Transient
+    private String createTimeStr;
+
+    @Transient
+    private String expireTimeStr;
 
     /**
      * @return id
@@ -130,17 +141,17 @@ public class TbLicense {
     }
 
     /**
-     * @return active_day
+     * @return indate
      */
-    public Integer getActiveDay() {
-        return activeDay;
+    public Integer getIndate() {
+        return indate;
     }
 
     /**
-     * @param activeDay
+     * @param indate
      */
-    public void setActiveDay(Integer activeDay) {
-        this.activeDay = activeDay;
+    public void setIndate(Integer indate) {
+        this.indate = indate;
     }
 
     /**
@@ -155,5 +166,29 @@ public class TbLicense {
      */
     public void setExpireTime(Date expireTime) {
         this.expireTime = expireTime;
+    }
+
+    public String getCusStatus() {
+        return cusStatus;
+    }
+
+    public void setCusStatus(String cusStatus) {
+        this.cusStatus = cusStatus;
+    }
+
+    public String getCreateTimeStr() {
+        return createTimeStr;
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
+    }
+
+    public String getExpireTimeStr() {
+        return expireTimeStr;
+    }
+
+    public void setExpireTimeStr(String expireTimeStr) {
+        this.expireTimeStr = expireTimeStr;
     }
 }

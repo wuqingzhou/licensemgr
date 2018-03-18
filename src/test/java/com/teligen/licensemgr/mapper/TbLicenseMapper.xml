@@ -12,7 +12,7 @@
     <result column="cluster_name" jdbcType="VARCHAR" property="clusterName" />
     <result column="cluster_num" jdbcType="INTEGER" property="clusterNum" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="active_day" jdbcType="INTEGER" property="activeDay" />
+    <result column="indate" jdbcType="INTEGER" property="indate" />
     <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
   </resultMap>
 </mapper>
